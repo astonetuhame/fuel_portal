@@ -30,34 +30,17 @@
                     <th>
                         <input wire:model="selectPageRows" wire:loading.attr="disabled" type="checkbox" value="">
                     </th>
-                    <th><a role="button" wire:click.prevent="sortBy('id')" href="#">Expense ID
-                            @include('includes._sort-icon', ['field' => 'id'])
-                        </a></th>
-                    <th><a role="button" wire:click.prevent="sortBy('lpo.loadings.id')" href="#">Trip Id
-                        @include('includes._sort-icon', ['field' => 'lpo.loadings.id'])
-                    </a></th>
-                    <th><a role="button" wire:click.prevent="sortBy('lpo.loadings.truck.truck_no')" href="#">Truck
-                        @include('includes._sort-icon', ['field' => 'lpo.loadings.truck.truck_no'])
-                    </a></th>
-                    <th><a role="button" wire:click.prevent="sortBy('lpo_date')" href="#">Lpo Date
-                        @include('includes._sort-icon', ['field' => 'lpo_date'])
-                    </a></th>
-                    <th><a role="button" wire:click.prevent="sortBy('station_name'')" href="#">Station
-                        @include('includes._sort-icon', ['field' => 'station_name'])
-                    </a></th>
+                    <th>Expense Id</th>
+                    <th>Trip Id</th>
+                    <th>Truck</th>
+                    <th>Lpo Date</th>
+                    <th>Station</th>
                     <th>Route</th>
-                    <th><a role="button" wire:click.prevent="sortBy('lpo_quantity')" href="#">Quantity
-                        @include('includes._sort-icon', ['field' => 'lpo_quantity'])
-                    </a></th>
-                    <th><a role="button" wire:click.prevent="sortBy('lpo_rate')" href="#">Rate
-                        @include('includes._sort-icon', ['field' => 'lpo_rate'])
-                    </a></th>
-                    <th><a role="button" wire:click.prevent="sortBy('cost')" href="#">Cost
-                        @include('includes._sort-icon', ['field' => 'cost'])
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Cost</th>
                     <th>Comment</th>
-                    <th><a role="button" wire:click.prevent="sortBy('doc_num')" href="#">Doc No.
-                        @include('includes._sort-icon', ['field' => 'doc_num'])
-                    </a></th>
+                    <th>Doc No.</th>
                 </tr>
 
             </thead>
@@ -71,21 +54,22 @@
                             <th scope="row">{{ $expense->id }}</th>
 
                             @foreach ($expense->lpo->loadings as $b)
-                                <td>{{ $b->id }}</td>
+                                <td>{{ $b->id  }}</td>
                             @endforeach
                             @foreach ($expense->lpo->loadings as $b)
                                 <td>{{ $b->truck->truck_no }}</td>
                             @endforeach
-                           <td>{{ Carbon\Carbon::parse($expense->lpo_date)->format('d-m-Y')  }}</td>
+                            <td>{{ Carbon\Carbon::parse($expense->lpo->date)->format('d-m-Y') }}</td>
                             <td>{{ $expense->lpo->station->name }}</td>
                             @foreach ($expense->lpo->loadings as $c)
                                 <td>{{ $c->route->route_code }}</td>
                             @endforeach
-                            <td>{{ $expense->lpo_quantity }}</td>
-                            <td>{{ $expense->lpo_rate }}</td>
-                            <td>{{ number_format($expense->cost, 2) }}</td>
+                            <td>{{ $expense->lpo->quantity }}</td>
+                            <td>{{ $expense->lpo->rate }}</td>
+                            <td>{{ number_format($expense->lpo->quantity * $expense->lpo->rate, 2) }}</td>
                             <td>{{ $expense->lpo->comment->comment }}</td>
                             <td><a href="{{ $expense->doc_path }}">{{ $expense->doc_num }}</a></td>
+
                         </tr>
                     @endif
                 @endforeach
@@ -98,4 +82,4 @@
     </table>
     {{ $expenses->links() }}
 
-</div>
+</div> 
