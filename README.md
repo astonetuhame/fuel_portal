@@ -6,6 +6,7 @@ A web application for managing fuel for trucks and generating LPO’s (Local Pur
 ## Features
 
 - Register & Login
+- User Roles & permissions
 - Add/import master data (trucks, routes stations, comments)
 - Add trips for trucks
 - Add fuel orders for trips
