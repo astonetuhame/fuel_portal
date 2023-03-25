@@ -106,7 +106,7 @@
                                 {{ ucfirst($key) }}: {{ $value }}
                             </p>
                         @endforeach
-                        <p><a href="http://www.sibedltd.com/">www.sibedltd.com</a></p>
+                        <p><a href="">www.fuelportal.com</a></p>
                         <p>P.O Box 78717</p>
                         <p>00507 Nairobi</p>
                     </td>
