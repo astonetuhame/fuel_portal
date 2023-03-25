@@ -61,7 +61,7 @@ class InvoiceGen extends Component
 
         if (count(array_unique($station)) == 1) {
             $client = new Party([
-                'name'          => 'Sibed Transport Company Limited',
+                'name'          => 'Fuel Portal',
             ]);
 
             $seller = new Party([
@@ -96,7 +96,7 @@ class InvoiceGen extends Component
                 ->currencyDecimalPoint('.')
                 ->filename('LPO ' . $newInvoiceID . ' (' . $seller->name . ')')
                 ->addItems($items)
-                ->logo(public_path('sibed.png'))
+                ->logo(public_path('logo.png'))
                 // You can additionally save generated invoice to configured disk
                 ->save('public');
 
