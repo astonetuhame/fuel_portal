@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sibed Portal'),
+    'name' => env('APP_NAME', 'Fuel Portal'),
 
 
     /*
